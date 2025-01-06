@@ -7,11 +7,22 @@ const admin = require('firebase-admin');
 const cloudinary = require('cloudinary').v2;
 
 // Initialize Firebase Admin
-admin.initializeApp({
-  credential: admin.credential.cert(
-    JSON.parse(process.env.FIREBASE_ADMIN_CREDENTIALS)
-  ),
-});
+try {
+  const firebaseConfig = process.env.FIREBASE_ADMIN_CREDENTIALS
+    ? JSON.parse(process.env.FIREBASE_ADMIN_CREDENTIALS)
+    : undefined;
+
+  if (!firebaseConfig) {
+    throw new Error('Firebase credentials not found in environment variables');
+  }
+
+  admin.initializeApp({
+    credential: admin.credential.cert(firebaseConfig)
+  });
+} catch (error) {
+  console.error('Error initializing Firebase:', error);
+  // You might want to throw the error or handle it appropriately
+}
 
 
 
@@ -174,5 +185,6 @@ app.get("/transcript/:jobId", async (req, res) => {
   }
 });
 
+// Export the app
 module.exports = app;
 
