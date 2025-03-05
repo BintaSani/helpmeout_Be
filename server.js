@@ -65,7 +65,7 @@ app.post('/transcribe', async (req, res) => {
       },
       {
         headers: {
-          Authorization: 'Bearer 02LTprR4LVUJBoev2NYTDRs4c1sOQXF3HLsYvTBiYsVnnTAiutNgfmy7VpJyRzjoOgMKcBGu7kHl3U97ceK4c2B4AEiek', // Replace with your API key
+          Authorization: 'Bearer 02230--ExSH5STYQ4gMsEhQr5rOeAlQ7STKrqQlw4u5du6KAu2-_Nxlu5vw7UFuWcjzFHIjVYKphM5agCvTRYHLpOKoFA', // Replace with your API key
           'Content-Type': 'application/json',
         },
       }
